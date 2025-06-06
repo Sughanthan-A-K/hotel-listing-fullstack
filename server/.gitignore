@@ -1,0 +1,30 @@
+# ===== General Node.js Ignores =====
+node_modules/
+.env
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== OS and IDE-specific =====
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ===== Build and Output Folders =====
+dist/
+build/
+
+# ===== Uploaded Files (optional) =====
+server/uploads/
+
+# ===== Backend Specific =====
+server/node_modules/
+server/.env
+server/*.log
+
+# ===== Frontend Specific =====
+hotel-listing-frontend/node_modules/
+hotel-listing-frontend/.env
