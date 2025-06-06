@@ -1,29 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchHotels, deleteHotel } from '../redux/hotelSlice'; 
 import { useNavigate, useLocation } from 'react-router-dom';
 import HotelCard from '../components/HotelCard';
 import HotelLogo from "../assets/images/HotelLogo.svg";
 import ClearIcon from '@mui/icons-material/Clear';
-import {
-  Box,
-  CircularProgress,
-  Typography,
-  TextField,
-  Button,
-  Pagination,
-  Snackbar,
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  Paper,
-  InputAdornment,
-  IconButton,
-  Stack,
-} from '@mui/material';
+import { Box, CircularProgress, Typography, TextField, Button, Pagination, Snackbar, Alert, Dialog, DialogTitle, DialogActions, DialogContent, DialogContentText, Paper, InputAdornment, Stack} from '@mui/material';
 
 const ITEMS_PER_PAGE = 6;
 

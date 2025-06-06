@@ -1,22 +1,7 @@
 import { useForm } from 'react-hook-form';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import {
-  Box,
-  Button,
-  TextField,
-  Typography,
-  InputLabel,
-  Paper,
-  IconButton,
-  Snackbar,
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  DialogActions,
-} from '@mui/material';
+import { Box, Button, TextField, Typography, InputLabel, Paper, IconButton, Snackbar, Alert, Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -134,7 +119,7 @@ const HotelForm = () => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        p: { xs: 1, sm: 2 },
+        // p: { xs: 1, sm: 2 },
       }}
     >
       <Paper
@@ -142,12 +127,12 @@ const HotelForm = () => {
         sx={{
           position: 'relative',
           width: {
-            xs: '95%', // mobile: almost full width
-            sm: 600, // tablet
-            md: 800, // laptop
+            xs: '95%', 
+            sm: 600, 
+            md: 800, 
           },
           maxHeight: {
-            xs: '90vh', // mobile max height for scroll
+            xs: '90vh', 
             sm: '85vh',
             md: 700,
           },
@@ -262,7 +247,7 @@ const HotelForm = () => {
               multiline
               rows={3}
               label="Description"
-              inputProps={{ maxLength: 500 }}
+              inputProps={{ maxLength: 1000 }}
               {...register('hotel_description', {
                 required: 'Description is required',
                 minLength: {
@@ -270,8 +255,8 @@ const HotelForm = () => {
                   message: 'Description must be at least 10 characters',
                 },
                 maxLength: {
-                  value: 500,
-                  message: 'Description must be at most 500 characters',
+                  value: 1000,
+                  message: 'Description must be at most 1000 characters',
                 },
               })}
               error={!!errors.hotel_description}
@@ -282,7 +267,7 @@ const HotelForm = () => {
               align="right"
               sx={{ display: 'block', mt: 0.5 }}
             >
-              {watch('hotel_description')?.length || 0}/500
+              {watch('hotel_description')?.length || 0}/1000
             </Typography>
           </Box>
 
@@ -318,26 +303,21 @@ const HotelForm = () => {
 
           {/* Price */}
           <Box mb={3}>
-            <TextField
-              fullWidth
-              label="Price (₹)"
-              type="text"
-              inputProps={{ maxLength: 6 }}
-              {...register('hotel_price', {
-                required: 'Price is required',
-                pattern: {
-                  value: /^\d{1,6}$/,
-                  message: 'Only digits allowed, up to 6 digits',
-                },
-              })}
-              onInput={(e) => {
-                e.target.value = e.target.value
-                  .replace(/[^0-9]/g, '')
-                  .slice(0, 6);
-              }}
-              error={!!errors.hotel_price}
-              helperText={errors.hotel_price?.message}
-            />
+          <TextField
+            fullWidth
+            label="Price (₹)"
+            type="number"
+            inputProps={{ step: '0.01' }} // allow decimals
+            {...register('hotel_price', {
+              required: 'Price is required',
+              pattern: {
+                value: /^\d{1,6}(\.\d{1,2})?$/,
+                message: 'Enter a valid price (up to 2 decimal places)',
+              },
+            })}
+            error={!!errors.hotel_price}
+            helperText={errors.hotel_price?.message}
+          />
           </Box>
 
           {/* Buttons */}

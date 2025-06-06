@@ -1,12 +1,4 @@
-import {
-  Card,
-  CardMedia,
-  CardContent,
-  Typography,
-  CardActions,
-  Button,
-  Tooltip,
-} from '@mui/material';
+import { Card, CardMedia, CardContent, Typography, CardActions, Button, Tooltip } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 const HotelCard = ({ hotel, onDelete }) => {
@@ -21,9 +13,9 @@ const HotelCard = ({ hotel, onDelete }) => {
     <Card
       sx={{
         width: {
-          xs: '90vw',  // Mobile view: almost full width
-          sm: '100%',  // Tablet view: stretch fully in container
-          md: 314,     // Fixed width on laptops and above
+          xs: '90vw',
+          sm: '100%',
+          md: 314,   
         },
         height: {
           xs: 280,
